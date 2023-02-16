@@ -32,6 +32,8 @@ jobs:
     - name: Build PDF
 
       run: |
+        
+        sudo apt-get -y install latexmk
 
         latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 
