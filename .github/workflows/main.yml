@@ -33,7 +33,7 @@ jobs:
 
       run: |
 
-        latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+        latexmk -pdf -interaction=nonstopmode -halt-on-error resume.tex
 
         mv main.pdf output/main.pdf  # move the output PDF to a separate directory
 
