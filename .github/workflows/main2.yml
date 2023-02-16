@@ -1,0 +1,48 @@
+name: Build PDF from LaTeX
+
+on:
+
+  push:
+
+    branches: [ main ]  # trigger the workflow on push to main branch
+
+  pull_request:
+
+    branches: [ main ]  # trigger the workflow on pull requests to main branch
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v2  # checkout the repository
+
+    - name: Set up LaTeX environment
+
+      uses: xu-cheng/latex-action@v2
+
+      with:
+
+        root_file: main.tex  # specify the name of the main LaTeX file
+
+    - name: Build PDF
+
+      run: |
+
+        latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+
+        mv main.pdf output/main.pdf  # move the output PDF to a separate directory
+
+    - name: Upload PDF artifact
+
+      uses: actions/upload-artifact@v2
+
+      with:
+
+        name: pdf
+
+        path: output/main.pdf  # upload the PDF as an artifact for later use
+
