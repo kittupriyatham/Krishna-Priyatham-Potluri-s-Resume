@@ -6,9 +6,10 @@ on:
 
     branches: [ main ]  # trigger the workflow on push to main branch
 
-  pull_request:
 
-    branches: [ main ]  # trigger the workflow on pull requests to main branch
+
+
+
 
 jobs:
 
