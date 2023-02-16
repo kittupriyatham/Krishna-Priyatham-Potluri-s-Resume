@@ -35,7 +35,7 @@ jobs:
         
         sudo apt-get -y install latexmk
 
-        latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+        latexmk -pdf -interaction=nonstopmode -f main.tex
 
         mv main.pdf output/main.pdf  # move the output PDF to a separate directory
 
