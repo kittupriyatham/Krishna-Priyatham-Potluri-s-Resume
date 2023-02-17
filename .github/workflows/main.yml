@@ -33,9 +33,17 @@ jobs:
 
       run: |
         
-        sudo apt-get -y install latexmk
-
-        latexmk -pdf -interaction=nonstopmode -f main.tex
+        sudo apt-get install texlive
+        
+        sudo apt install texinfo
+        
+        sudo apt-get install texlive-fonts-recommended
+        
+        sudo apt-get install texlive-fonts-extra
+        
+        sudo apt-get install texlive-latex-extra
+        
+        pdflatex main.tex
 
         mv main.pdf output/main.pdf  # move the output PDF to a separate directory
 
