@@ -1,9 +1,13 @@
 version: 2.1
 orbs:
   latex-orb: azorimor/latex-orb@1.0.0
+  github-cli: circleci/github-cli@2.2.0
 
 workflows:
   build:
     jobs:
       - latex-orb/build:
           file: main.tex
+      - github-cli/upload:
+            files: https://github.com/kittupriyatham/Krishna-Priyatham-Potluri-s-Resume/archive/refs/tags/artifacts.tar.gz 
+            tag: artifacts 
