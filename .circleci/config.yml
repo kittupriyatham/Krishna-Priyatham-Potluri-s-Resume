@@ -13,7 +13,6 @@ jobs:
       - checkout
       - run: git config --global user.email "kittupriyatham@gmail.com"
       - run: git config --global user.name "kittupriyatham"
-      - run: git remote add origin https://github.com/kittupriyatham/Krishna-Priyatham-Potluri-s-Resume.git
       - run: git fetch --all
       - run: git checkout main
       - run: mkdir -p .github/artifacts
