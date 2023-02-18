@@ -16,7 +16,7 @@ jobs:
       - run: git fetch --all
       - run: git checkout main
       - run: mkdir -p .github/artifacts
-      - run: cp -R path/to/artifact/* .github/artifacts
+      - run: cp -R tmp/tex/* .github/artifacts
       - run: git add .github/artifacts
       - run: git commit -m "Upload artifacts [skip ci]"
       - run: git push origin main
