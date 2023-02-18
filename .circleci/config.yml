@@ -1,0 +1,44 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full
+      - run: pdflatex main.tex
+      - persist_to_workspace:
+          root: .
+          paths:
+            - main.pdf
+
+  deploy:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - attach_workspace:
+          at: .
+      - run: |
+          curl --header "Authorization: Bearer $CIRCLECI_API_TOKEN" \
+            --header "Content-Type: application/octet-stream" \
+            --data-binary "@main.pdf" \
+            --request POST \
+            "https://circleci.com/api/v2/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/pipeline?circle-token=$CIRCLE_TOKEN"
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
