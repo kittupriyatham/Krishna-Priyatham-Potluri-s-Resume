@@ -9,7 +9,7 @@ workflows:
       - latex-orb/build:
           file: main.tex
       - github-cli/upload:
-            token: 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
+            token: GH_TOKEN
             files: https://github.com/kittupriyatham/Krishna-Priyatham-Potluri-s-Resume/archive/refs/tags/artifacts.tar.gz 
             tag: artifacts 
             requires:
