@@ -1,9 +1,17 @@
 version: 2.1
 
 orbs:
-  latex-orb: azorimor/latex-orb@1.0.0
+  latex: azorimor/latex-orb@1.0.0
 
 jobs:
+  builder:
+    executor: latex/default
+    steps:
+      - checkout
+      - latex/build:
+        file: main.tex
+      - store_artifacts:
+          path: /tmp/tex/
   upload:
     docker:
       - image: cimg/base:stable
@@ -23,8 +31,8 @@ jobs:
 
 
 workflows:
-    example-workflow:
+  version: 2
+  build-and-upload:
       jobs:
-        - latex-orb/build:
-            file: main.tex
+        - latex/build
         - upload
