@@ -2,8 +2,30 @@ version: 2.1
 
 orbs:
   latex-orb: azorimor/latex-orb@1.0.0
+
+jobs:
+  upload:
+    docker:
+      - image: cimg/base:stable
+    environment:
+      GITHUB_TOKEN: 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
+    steps:
+      - checkout
+      - run: git config --global user.email "kittupriyatham@gmail.com"
+      - run: git config --global user.name "kittupriyatham"
+      - run: git remote add origin https://github.com/kittupriyatham/Krishna-Priyatham-Potluri-s-Resume.git
+      - run: git fetch --all
+      - run: git checkout main
+      - run: mkdir -p .github/artifacts
+      - run: cp -R path/to/artifact/* .github/artifacts
+      - run: git add .github/artifacts
+      - run: git commit -m "Upload artifacts [skip ci]"
+      - run: git push origin main
+
+
 workflows:
     example-workflow:
       jobs:
         - latex-orb/build:
             file: main.tex
+        - upload
