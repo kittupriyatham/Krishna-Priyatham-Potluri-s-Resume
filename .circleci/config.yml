@@ -2,15 +2,22 @@ version: 2.1
 orbs:
   latex-orb: azorimor/latex-orb@1.0.0
   github-cli: circleci/github-cli@2.2.0
+  github-release: unmadeworks/github-release@1.7.0
+
+jobs:
+  example-job:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - github-release/github-release:
+          REPO_NAME: Krishna-Priyatham-Potluri-s-Resume 
+          GITHUB_PAT_ENVAR_NAME: GITHUB_PAT 
+          GITHUB_USER_ENVAR_NAME: GITHUB_USER 
 
 workflows:
   build:
     jobs:
       - latex-orb/build:
           file: main.tex
-      - github-cli/upload:
-            token: GH_TOKEN
-            files: https://github.com/kittupriyatham/Krishna-Priyatham-Potluri-s-Resume/archive/refs/tags/artifacts.tar.gz 
-            tag: artifacts 
-            requires:
-              - latex-orb/build
+      - example-job
