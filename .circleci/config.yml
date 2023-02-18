@@ -11,3 +11,5 @@ workflows:
       - github-cli/upload:
             files: https://github.com/kittupriyatham/Krishna-Priyatham-Potluri-s-Resume/archive/refs/tags/artifacts.tar.gz 
             tag: artifacts 
+            requires:
+              - latex-orb/build
