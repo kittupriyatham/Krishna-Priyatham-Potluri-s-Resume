@@ -6,7 +6,6 @@ jobs:
   tex_to_pdf:
     executor: latex-orb/default
     steps:
-      - checkout
       - latex-orb/build:
         file: main.tex
       - run: git clone $GITHUB_REPO_URL
