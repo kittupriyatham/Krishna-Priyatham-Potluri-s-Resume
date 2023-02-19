@@ -2,8 +2,29 @@ version: 2.1
 orbs:
   latex-orb: azorimor/latex-orb@1.0.0
 
+jobs:
+  tex_to_pdf:
+    executor: latex-orb/default
+    steps:
+      - checkout
+      - latex-orb/build:
+        file: main.tex
+  upload:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run: git clone $GITHUB_REPO_URL
+      - run: cd $GITHUB_REPO
+      - run: cp /tmp/tex/main.pdf ./
+      - run: git add *
+      - run: git commit -m "upload main.pdf"
+      - run: git push https://$GH_TOKEN@github.com/$GITHUB_USER/$GITHUB_REPO.git
+
 workflows:
   build:
     jobs:
       - latex-orb/build:
           file: main.tex
+      - upload:
+          requires:
+          - latex-orb/build
