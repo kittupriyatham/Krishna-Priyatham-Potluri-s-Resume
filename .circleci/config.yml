@@ -9,10 +9,6 @@ jobs:
       - checkout
       - latex-orb/build:
         file: main.tex
-  upload:
-    docker:
-      - image: cimg/base:stable
-    steps:
       - run: git clone $GITHUB_REPO_URL
       - run: cd $GITHUB_REPO
       - run: cp /tmp/tex/main.pdf ./
@@ -25,6 +21,3 @@ workflows:
     jobs:
       - latex-orb/build:
           file: main.tex
-      - upload:
-          requires:
-          - latex-orb/build
