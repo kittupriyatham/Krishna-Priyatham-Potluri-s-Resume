@@ -4,25 +4,26 @@ on:
   push:
     branches:
       - main
-    # Only trigger the action if the source files change, avoiding infinite loops when the PDF is committed
     paths:
       - 'main.tex'
       - 'resume.cls'
       - 'mypic.png'
-  workflow_dispatch: # Allows you to manually trigger the build from the GitHub Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: write 
 
 jobs:
   build_and_commit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # Resolves the ubuntu-latest migration notice
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        # actions/checkout @ v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 
 
       - name: Compile LaTeX to PDF
-        uses: xu-cheng/latex-action@v3
+        # xu-cheng/latex-action @ latest v3 commit 
+        uses: xu-cheng/latex-action@cb5ea813f8c85c07d3e07d0f983693fb1d0b7d78 
         with:
           root_file: main.tex
           args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode"
@@ -31,7 +32,8 @@ jobs:
         run: mv main.pdf Krishna_Priyatham_Potluri_s_Resume.pdf
 
       - name: Commit and Push Generated PDF
-        uses: stefanzweifel/git-auto-commit-action@v5
+        # stefanzweifel/git-auto-commit-action @ v5.0.1
+        uses: stefanzweifel/git-auto-commit-action@8621497c8c39c72f3e2a999a26b4ce18160f54ff 
         with:
           commit_message: "chore: Auto-compile Krishna_Priyatham_Potluri_s_Resume.pdf from main.tex"
           file_pattern: "Krishna_Priyatham_Potluri_s_Resume.pdf"
