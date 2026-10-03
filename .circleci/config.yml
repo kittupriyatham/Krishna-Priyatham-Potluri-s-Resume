@@ -20,3 +20,7 @@ workflows:
     jobs:
       - latex-orb/build:
           file: main.tex
+          pre-steps:
+            - run:
+                name: Install git and ssh
+                command: apt-get update -qq && apt-get install -y -qq git openssh-client
