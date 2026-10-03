@@ -1,0 +1,37 @@
+name: Build and Deploy Resume PDF
+
+on:
+  push:
+    branches:
+      - main
+    # Only trigger the action if the source files change, avoiding infinite loops when the PDF is committed
+    paths:
+      - 'main.tex'
+      - 'resume.cls'
+      - 'mypic.png'
+  workflow_dispatch: # Allows you to manually trigger the build from the GitHub Actions tab
+
+permissions:
+  contents: write 
+
+jobs:
+  build_and_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX to PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode"
+
+      - name: Rename Output to Target Verbatim Name
+        run: mv main.pdf Krishna_Priyatham_Potluri_s_Resume.pdf
+
+      - name: Commit and Push Generated PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: Auto-compile Krishna_Priyatham_Potluri_s_Resume.pdf from main.tex"
+          file_pattern: "Krishna_Priyatham_Potluri_s_Resume.pdf"
