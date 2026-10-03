@@ -7,8 +7,9 @@
 \usepackage{array}
 \usepackage{enumitem}
 \usepackage{hyperref}
+\usepackage{tabularx}
 \usepackage{xltabular}
-\usepackage{graphicx}
+\usepackage[final]{graphicx} % force real images (not draft placeholders)
 \usepackage{outlines}
 
 \setlist[itemize]{leftmargin=*}
@@ -23,8 +24,8 @@
 \pagenumbering{gobble}
 \newenvironment{csection}[2]{
     \textbf{#1} 
-    \vspace{0.15cm} 
-    \hrule 
+    \vspace{0.48cm} 
+    \hrule
     {#2}
 }{}
 \newenvironment{frcontent}[4]{

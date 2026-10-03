@@ -1,142 +1,162 @@
-\documentclass{resume}
+\documentclass[10pt,a4paper]{article}
+
+% --- Page + typography (matches the look of the screenshot) ---
+\usepackage[a4paper,margin=0.55in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext} % Times-like
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[final]{graphicx} % force real images (avoid draft placeholders)
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xurl} % nicer URL line breaks
+\usepackage[hidelinks]{hyperref}
+\urlstyle{same}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% --- Colors / rules ---
+\definecolor{Accent}{HTML}{1F4E79}
+
+\newcommand{\sectionrule}{\par\vspace{3pt}{\color{Accent}\hrule height 1pt}\vspace{3pt}}
+\newcommand{\Section}[1]{%
+  {\sectionrule \color{Accent}\bfseries\uppercase{#1}}\par\sectionrule
+}
+
+% --- Lists (tight bullets like the screenshot) ---
+\setlist[itemize]{
+  leftmargin=1.1em,
+  topsep=1pt,
+  itemsep=1pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+\renewcommand{\labelitemi}{\textbullet}
+
+% --- Entry row: left title/company + right date ---
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}p{0.34\linewidth}}
+\newcommand{\WorkEntry}[3]{%
+  \begin{tabularx}{\linewidth}{@{}L R@{}}
+    {\bfseries #1 \textbar\  #2} & {\footnotesize\itshape\sloppy #3}\\
+  \end{tabularx}
+}
+
 \begin{document}
-\fontfamily{ppl}\selectfont
-\noindent
-\begin{tabularx}{\linewidth}{@{}m{0.75\textwidth} m{0\textwidth}@{}}
+
+% ---------------- Header ----------------
+\begin{minipage}[t]{0.80\linewidth}
+{\color{Accent}\bfseries\LARGE POTLURI KRISHNA PRIYATHAM}\par
+{\large \bfseries Software Engineer \textbullet\ AI/ML/Data Practitioner \textbullet\ Quantum Computing Enthusiast}\par
+\vspace{3pt}
+% Removed \small from this section to increase URL size and fill horizontal space
+\large
+\href{mailto:kittu.priyatham@gmail.com}{\nolinkurl{kittu.priyatham@gmail.com}} \textbar\
+\href{https://www.linkedin.com/in/potluri-krishna-priyatham}{\nolinkurl{linkedin.com/in/potluri-krishna-priyatham}}\\
+\href{https://github.com/kittupriyatham}{\nolinkurl{github.com/kittupriyatham}} \textbar\
+\href{https://www.stopstalk.com/user/profile/kittu_priyatham}{\nolinkurl{stopstalk.com/user/profile/kittu_priyatham}}\\
+\href{https://potluri-krishna-priyatham.tech}{\nolinkurl{potluri-krishna-priyatham.tech}} \textbar\
+\href{https://credly.com/users/potluri-krishna-priyatham}{\nolinkurl{credly.com/users/potluri-krishna-priyatham}}\par
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.18\linewidth}
+\raggedleft
+\vspace*{-10pt} % Use a negative value to pull the image up
+\includegraphics[width=2.5cm]{mypic.png}
+\end{minipage}
+
+\vspace{0pt}
+
+% ---------------- Summary ----------------
+\par
+\Section{Summary}
 {
-    \large {Krishna Priyatham Potluri} \newline
-    \small{
-    % \begin{align}
-        A Neophilia striving to be an all rounder\newline
-    % \end{align}
-    \href{}{Gudivada, Andhra Pradesh, India} \textbf{·} 
-    % https://goo.gl/maps/Z2fbMfH7AwJycmA66
-    % Gudivada, Andhra Pradesh, India 
-    \newline
-        \clink{
-            \href{https://potlurikrishnapriyatham.azurewebsites.net}{Portfolio} \textbf{·}
-            \href{mailto:kittu.priyatham@gmail.com}{Mail ID} \textbf{·}
-            \href{https://api.whatsapp.com/send/?phone=919938796990/}{Mobile}
-            \textbf{·}
-             \href{https://github.com/kittupriyatham/}{GitHub}\newline
-             \href{https://www.linkedin.com/in/krishnapriyathampotluri/}{LinkedIn}
-             \textbf{·} 
-            %  \href{https://www.codechef.com/users/kittu_priyatha/}{Codechef}
-            %  \textbf{·}
-             \href{https://www.stopstalk.com/user/profile/kittu_priyatham}{Coding Profiles}
-             \textbf{·} 
-             \href{https://www.youtube.com/watch?v=-4KNQBN91eM&ab_channel=KrishnaPriyathamPotluri}{Video Resume}
-        } \newline
-    }
-}
-& 
-{
-    \includegraphics[width=4cm]{mypic.jpg}
-}
-\end{tabularx}
-\csection{Summary}{\small
-    \begin{itemize}
-        \item \footnotesize A technical enthusiast having thirst for knowledge and interest in Data Science, AI, Cloud Computing and Quantum Science.
-    \end{itemize}
-}
-\csection{EDUCATION}{\small
-    \begin{itemize}
-        % item 1 %
-        \item \textbf{B.Tech in Computer Science And Engineering\hspace{17em}(2019-2023)}\newline{K L Deemed to be University, Vaddeswaram.}\newline{CGPA: 8.2/10}
-        \item \textbf{Intermediate\hspace{31.5em}(2015 - 2017)}\newline{Narayana Junior College, Poranki.}\newline{Marks: 868/1000}{}
-        \item\textbf{High School\hspace{31.65em}(2006 - 2015)}\newline{Viswabharati E.M High School, Gudivada.}\newline{CGPA: 9.2/10}{}
-    \end{itemize}
-}
- 
-\csection{SKILLS}{\small
-    \begin{itemize}
-        \item \textbf{Languages} \newline
-        {\footnotesize C, C++, JAVA, PYTHON, HTML, CSS, JavaScript}{}{}
-        \item \textbf{Libraries/Frameworks} \newline
-        {\footnotesize Flask, Pandas, Numpy, sklearn, matplotlib, opencv}{}{}
-        \item \textbf{Cloud} \newline
-        {\footnotesize AWS, Azure}{}{}
-        \item \textbf{Databases} \newline
-        {\footnotesize MYSQL, MongoDB}{}{}
-        \item \textbf{Other Skills} \newline
-        {\footnotesize Data Science and Analysis, Machine Learning, Quantum Computing}
-    \end{itemize}
+Problem solver, software engineer and AI/ML/Data practitioner with \textasciitilde{}2 years of industry experience across defence systems (BEL), enterprise mobile (Jio Platforms), and cloud-deployed ML applications. Skilled across full-stack development, data science, and quantum computing. Known for breaking down ambiguous requirements, identifying root causes, and delivering reliable solutions with hands-on cloud deployment, system design/architecture, and autonomous AI agent experience.
 }
 
-\csection{PROJECTS}{\small
-    \begin{itemize}
-        \item \textbf{My Portfolio}
-        {\footnotesize \hspace{32em}\href{https://potlurikrishnapriyatham.azurewebsites.net/}{Link}}\hspace{5em}{\href{https://github.com/kittupriyatham/MyPortFolio}{Github}}{}
-        
-        \item \textbf{IRIS FLOWER CLASSIFICATION.}
-        {\footnotesize \hspace{20em}\href{https://mlmd.azurewebsites.net/}{Link}}\hspace{5em}{\href{https://github.com/kittupriyatham/Machine-Learning-Model-Deployment}{Github}}{}
-        
-        \item \textbf{3D Modelling of Revolver MG 31 DS.} 
-        {\footnotesize \hspace{18.5em}\href{https://potlurikrishnapriyatham.azurewebsites.net/projects/creo}{Link}}\hspace{5em}{\href{https://github.com/kittupriyatham/Academic-Projects/blob/main/3D-Modelling/revolverassembly.stl}{Github}}{}
-        
-        \item \textbf{Array Manipulation in C.}
-        {\footnotesize \hspace{25em}\href{https://potlurikrishnapriyatham.azurewebsites.net/projects/array}{Link}}\hspace{5em}{\href{https://github.com/kittupriyatham/Academic-Projects/tree/main/Array-Manipulation-C}{Github}}{}
-    \end{itemize}
-}
-    
-\csection{Significant Roles}{\small
-    \begin{itemize}
-        \item \textbf{President of Quantum Computing Club \hspace{13em}AUG '22 – Present (6 M)}\newline{K L University }{}{}{}
-        
-        \item \textbf{Peer Mentor \hspace{25em}MAY '21 – MAY '22 (12 M)}\newline{K L University }{}{}{}
-        
-        \item \textbf{Student Member of CSE  IRP CELL \hspace{15em}OCT '20 – MAY '21 (8 M)}\newline{K L University}{}{}{}
-    \end{itemize}
-}
-    
-\csection{EXPERIENCE}{\small
-    \begin{itemize}
-        \item \textbf{Jio Platforms Limited \hspace{20em}AUG '22 – PRESENT (6 M)}\newline{Internship}{}{}{}
-        \item \textbf{Indian Servers \hspace{25em}JUN '21 – AUG '21 (3 M)}\newline{Internship Trainee}{}{}{}
-        \item \textbf{Internshala \hspace{25.5em}MAY '20 – AUG '20 (4 M)}\newline{Internshala Student Partner}{}{}{}
-    \end{itemize}
-}
-    
-\csection{Global Certifications}{\small
-    \begin{itemize}
-        \item \textbf{Microsoft Certified: Azure Developer Associate} 
-        {\footnotesize \hspace{16.7em}Overall Score: 765}{}{}
-    \end{itemize}
-    
-    \begin{itemize}
-        \item \textbf{Cambridge Business English Preliminary} 
-        {\footnotesize \hspace{20em}Overall Score: 146}{}{}
-    \end{itemize}
-    
-    \begin{itemize}
-        \item \textbf{AWS Certified Developer Associate} 
-        {\footnotesize \hspace{23.25em}Overall Score: 749}{}{}
-    \end{itemize}
-    
-    \begin{itemize}
-        \item \textbf{Certified Entry-Level Python Programmer} 
-        {\footnotesize \hspace{20em}Overall Score: 88\%}{}{}
-    \end{itemize}
-    
-    \begin{itemize}
-        \item \textbf{Wipro TalentNext Java J2EE Certification} 
-        {\footnotesize \hspace{20.5em}Overall Score: 78\%}{}{}
-    \end{itemize}
-}
-        
-\csection{References}{\small
-    \begin{itemize}
-        \item \textbf{Hari Kiran Vege Sir}\newline{\footnotesize HOD, CSE, KLU. \hspace{40em}\href{tel:9908106167}{Contact}}{}
-    \end{itemize}
-    \begin{itemize}
-        \item \textbf{Anne Venkata Praveen Krishna Sir}\newline{\footnotesize Placements Incharge, CSE, KLU.\hspace{33.25em}\href{tel:9949395595}{Contact}}{}
-    \end{itemize}
-}
+\vspace{4pt}
 
-\csection{Declaration}{\small
-    \begin{itemize}
-        \item \footnotesize I hereby declare that the above mentioned information is correct up to my knowledge and I bear the responsibility for the correctness of the above mentioned.
-    \end{itemize}
-}
+% ---------------- Skills ----------------
+\Section{Skills}
+{\small
+\textbf{Quantum:} Qiskit, Cirq, QBraid, Azure Quantum\\
+\textbf{Mathematics:} Linear Algebra, Probability, Numerical Methods, Advanced Calculus\\
+\textbf{Languages:} Python, Java, C/C++, JavaScript, Swift, SQL, HTML/CSS\\
+\textbf{Frameworks \& ML:} Spring Boot, React, Flask, TensorFlow, PyTorch, Scikit-Learn, LangChain, OpenCV, Pandas, NumPy\\
+\textbf{Cloud \& Other Tools:} AWS, Azure, MySQL, MongoDB, PostgreSQL, Power BI, Git, Docker
+}\par
+
+\vspace{4pt}
+
+% ---------------- Work Experience ----------------
+\Section{Work Experience}
+
+\WorkEntry{Deputy Engineer}{Bharat Electronics Limited (BEL)}{Jun 2025 -- Mar 2026}
+\begin{itemize}
+  \item Contributed to the AEW\&C Maintenance Management System (Java Spring Boot, React, Python) by implementing key modules and proposing an OCR-based document ingestion flow to auto-fill forms and surface extracted fields --- estimated to reduce manual data entry by \textasciitilde{}68\%.
+  \item Engineered a high-reliability Ventilator System UI with Qt/QML meeting strict safety standards.
+  \item Designed and engineered the VAAMS system architecture, defining key modules and integration points across software and hardware components.
+\end{itemize}
+
+\WorkEntry{Software Intern}{Jio Platforms Limited}{Aug 2022 -- Jul 2023}
+\begin{itemize}
+  \item Engineered 5+ major features and resolved 20+ critical bugs for the JioMeet macOS client, driving a 35\% increase in app performance and significantly enhancing the end-to-end user experience for millions of users.
+  \item Ensured platform stability and data continuity by upgrading to GA4 tracking and maintaining high-quality Swift/Objective-C codebases, resulting in a 99.9\% session success rate across the platform.
+\end{itemize}
+
+\WorkEntry{ML Intern}{Indian Servers}{Jun 2021 -- Aug 2021}
+\begin{itemize}
+  \item Built and deployed IRIS flower classification ML model (Scikit-learn + Flask) on Azure App Service with 90\% model accuracy.
+\end{itemize}
+
+\vspace{2pt}
+
+% ---------------- Projects ----------------
+\Section{Projects}
+
+\WorkEntry{Own Agent --- Personal AI Agent}{LangChain, Gemini, Python}{\href{https://github.com/kittupriyatham/OwnAgent}{github.com/kittupriyatham/OwnAgent}}
+\begin{itemize}
+  \item Autonomous agent executing system tasks, file operations, and real-time web research through a custom toolset.
+\end{itemize}
+
+\WorkEntry{QiskitLearningJourney}{Python, Qiskit, QBraid}{\href{https://github.com/kittupriyatham/QiskitLearningJourney}{github.com/kittupriyatham/QiskitLearningJourney}}
+\begin{itemize}
+  \item Implemented 9 quantum circuits from scratch using a Problem-Based Learning approach: Bell \& GHZ states, Superdense Coding, Quantum Half-Adder etc --- architected to run on local simulators (Qiskit Aer), QBraid cloud, and future Azure Quantum / AWS Braket targets.
+\end{itemize}
+
+\WorkEntry{BookCollectionManager}{Spring Boot, PostgreSQL, React}{\href{https://github.com/kittupriyatham/BookCollectionManager}{github.com/kittupriyatham/BookCollectionManager}}
+\begin{itemize}
+  \item Full-stack CRUD app with RESTful API backend and responsive React frontend for personal library management.
+\end{itemize}
+
+\WorkEntry{ML-Model-Deployment}{Scikit-learn, Flask, Azure App Service}{\href{https://github.com/kittupriyatham/Machine-Learning-Model-Deployment}{github.com/kittupriyatham/Machine-Learning-Model-Deployment}}
+\begin{itemize}
+  \item Deployed an Iris classification model as a Flask web app on Azure App Service --- model achieved 90\% accuracy on test data, packaged for production-style serving.
+\end{itemize}
+
+\vspace{2pt}
+
+% ---------------- Education ----------------
+\Section{Education}
+\WorkEntry{B.Tech Computer Science \& Engineering}{KL Deemed to be University}{Aug 2019 -- Apr 2023}
+
+\vspace{3pt} % Adds breathing room between the degrees
+
+\WorkEntry{PhD Computer Science \& Engineering}{SRM AP University}{Sept 2026 -- present}
+
+\vspace{4pt}
+% ---------------- Certifications ----------------
+\Section{Certifications}
+\begin{itemize}
+  \item WISER x AQV x Qubitech: Quantum Algorithms: Fundamentals \& Hands-on Training --- Phase 2 [In Progress]
+  \item WISER x AQV x Qubitech: Quantum Fundamentals --- Phase 1 [Completed] (top \textasciitilde{}4.6\% of 65,000+ candidates)
+  \item Microsoft Certified: Azure Developer Associate (2022)
+  \item Certified Entry-Level Python Programmer --- OpenEDG (2022)
+\end{itemize}
+{\small More at: \href{https://credly.com/users/potluri-krishna-priyatham}{credly.com/users/potluri-krishna-priyatham}}\par
 
 \end{document}
